@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 // EmailJS configuration
 const EMAILJS_SERVICE_ID = 'service_v0850sl'
-const EMAILJS_PUBLIC_KEY = 'QphDE4xgozefDEeuS' // Public key for reference
-// Note: For server-side API calls, use Private Key from EmailJS dashboard
-// Private Key should be set as environment variable for security
-const EMAILJS_PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY || 'QphDE4xgozefDEeuS'
+const EMAILJS_PUBLIC_KEY = 'QphDE4xgozefDEeuS'
 const EMAILJS_TEMPLATE_ID = 'template_kfn1g8l'
 
 export async function POST(request: NextRequest) {
@@ -39,13 +36,31 @@ export async function POST(request: NextRequest) {
       subject: `Payment Request - ₹${parseFloat(amount).toFixed(2)}`,
     }
 
+    // Validate that public key is set
+    if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY.trim() === '') {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'EmailJS Public Key is not configured. Please set EMAILJS_PUBLIC_KEY.',
+        },
+        { status: 500 }
+      )
+    }
+
     // Send email using EmailJS REST API
-    // Using URLSearchParams format as required by EmailJS
+    // EmailJS requires form-urlencoded format with template_params as JSON string
     const formData = new URLSearchParams()
     formData.append('service_id', EMAILJS_SERVICE_ID)
     formData.append('template_id', EMAILJS_TEMPLATE_ID)
-    formData.append('user_id', EMAILJS_PRIVATE_KEY)
+    formData.append('user_id', EMAILJS_PUBLIC_KEY)
     formData.append('template_params', JSON.stringify(templateParams))
+
+    console.log('Sending email to:', recipientEmail)
+    console.log('EmailJS Config:', {
+      service_id: EMAILJS_SERVICE_ID,
+      template_id: EMAILJS_TEMPLATE_ID,
+      user_id: EMAILJS_PUBLIC_KEY ? EMAILJS_PUBLIC_KEY.substring(0, 10) + '...' : 'MISSING'
+    })
 
     const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
