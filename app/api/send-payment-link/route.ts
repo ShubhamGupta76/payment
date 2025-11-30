@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 // EmailJS configuration
 const EMAILJS_SERVICE_ID = 'service_v0850sl'
-const EMAILJS_PUBLIC_KEY = 'QphDE4xgozefDEeuS'
+const EMAILJS_PUBLIC_KEY = 'QphDE4xgozefDEeuS' // Public key for reference
+// Note: For server-side API calls, use Private Key from EmailJS dashboard
+// Private Key should be set as environment variable for security
+const EMAILJS_PRIVATE_KEY = process.env.EMAILJS_PRIVATE_KEY || 'QphDE4xgozefDEeuS'
 const EMAILJS_TEMPLATE_ID = 'template_kfn1g8l'
 
 export async function POST(request: NextRequest) {
@@ -41,7 +44,7 @@ export async function POST(request: NextRequest) {
     const formData = new URLSearchParams()
     formData.append('service_id', EMAILJS_SERVICE_ID)
     formData.append('template_id', EMAILJS_TEMPLATE_ID)
-    formData.append('user_id', EMAILJS_PUBLIC_KEY)
+    formData.append('user_id', EMAILJS_PRIVATE_KEY)
     formData.append('template_params', JSON.stringify(templateParams))
 
     const emailjsResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
