@@ -1,0 +1,386 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.paymentCard {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 24px;
+}
+
+.amountDisplay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #f0f4ff;
+  border: 2px solid #0070f3;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.amountLabel {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.amountValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0070f3;
+}
+
+.emailSection {
+  margin-bottom: 32px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.emailInput {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  color: #333333;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.emailInput:focus {
+  outline: none;
+  border-color: #0070f3;
+  background-color: #ffffff;
+}
+
+.sectionHeading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16px;
+}
+
+.paymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.paymentOption {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.paymentOption:hover {
+  border-color: #0070f3;
+  background-color: #f8f9ff;
+}
+
+.paymentOption.selected {
+  border-color: #0070f3;
+  background-color: #f0f4ff;
+}
+
+.radio {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.paymentLabel {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 12px;
+  width: 32px;
+  text-align: center;
+}
+
+.methodInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.methodName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.methodDescription {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.cardLogos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.cardLogos span {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.visa {
+  background-color: #1a1f71;
+  color: #ffffff;
+}
+
+.mastercard {
+  background: linear-gradient(135deg, #eb001b 0%, #f79e1b 100%);
+  color: #ffffff;
+}
+
+.amex {
+  background-color: #006fcf;
+  color: #ffffff;
+}
+
+.discover {
+  background-color: #ff6000;
+  color: #ffffff;
+}
+
+.payButton {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.payButton:hover:not(:disabled) {
+  background-color: #0051cc;
+}
+
+.payButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.successMessage {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.errorMessage {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.paymentForm {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #333333;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+.input::placeholder {
+  color: #999999;
+}
+
+/* UPI Styles */
+.upiOptions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.upiOption {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upiOption:hover {
+  border-color: #0070f3;
+}
+
+.upiOption.active {
+  background-color: #0070f3;
+  color: #ffffff;
+  border-color: #0070f3;
+}
+
+.qrContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.qrCode {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 16px;
+}
+
+.qrPlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qrText {
+  font-size: 14px;
+  color: #666666;
+  text-align: center;
+}
+
+/* Bank Account Styles */
+.bankDetails {
+  /* Additional styles if needed */
+}
+
+/* Wallet Styles */
+select.input {
+  cursor: pointer;
+}
+
+/* Crypto Styles */
+.cryptoInfo {
+  padding: 16px;
+  background-color: #fff3cd;
+  border-radius: 8px;
+  border: 1px solid #ffc107;
+}
+
+.cryptoInfo p {
+  font-size: 14px;
+  color: #856404;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .paymentCard {
+    padding: 24px;
+  }
+
+  .heading,
+  .sectionHeading {
+    font-size: 20px;
+  }
+
+  .cardLogos {
+    display: none;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .paymentForm {
+    padding: 16px;
+  }
+
+  .qrCode {
+    padding: 16px;
+  }
+
+  .qrPlaceholder svg {
+    width: 150px;
+    height: 150px;
+  }
+}
+
